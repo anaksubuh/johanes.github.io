@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Sayangkuu ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cinta: '#FF4D6D',
+                        lembut: '#FFE5EC',
+                        tuaCinta: '#C9184A',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bayangan-teks {
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+            }
+            .latar-hati {
+                background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffdde1 100%);
+                min-height: 100vh;
+            }
+            .muncul-perlahan {
+                animation: muncul 1.2s ease-out;
+            }
+            @keyframes muncul {
+                from { opacity: 0; transform: translateY(25px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .melayang {
+                animation: gerak 4s ease-in-out infinite;
+            }
+            @keyframes gerak {
+                0% { transform: translateY(0); }
+                50% { transform: translateY(-12px); }
+                100% { transform: translateY(0); }
+            }
+            .jatuh-hati {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1;
+            }
+        }
+    </style>
+</head>
+<body class="latar-hati font-sans relative">
+    <!-- Efek Hati Jatuh -->
+    <div class="jatuh-hati" id="efekHati"></div>
+
+    <!-- Musik Latar -->
+    <audio id="musikLatar" loop>
+        <source src="lagu-kesayangan.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung pemutar musik.
+    
+    
+    <button id="tombolMusik" class="fixed top-4 right-4 bg-white/80 p-3 rounded-full shadow-lg z-50 hover:scale-110 transition">
+        <i class="fa fa-music text-cinta text-xl"></i>
+    </button>
+
+    <!-- Konten Utama -->
+    <div class="container mx-auto px-4 py-10 text-center relative z-10">
+        <div class="muncul-perlahan">
+            <h1 class="text-4xl md:text-6xl font-bold text-white bayangan-teks mb-4">
+                🎉 Selamat Ulang Tahun dedee kecill 🎂
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-tuaCinta font-semibold mb-8">
+                Untuk Orang Spesial di Hatiku ❤️
+            </h2>
+
+            <!-- ✅ FOTO UTAMA -->
+            <div class="w-64 h-64 mx-auto rounded-full overflow-hidden border-8 border-white shadow-xl melayang mb-8">
+                <img src="/foto1.jpg.jpeg" alt="beautyfull grill" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Hitung Mundur -->
+            <div class="bg-white/70 backdrop-blur p-6 rounded-2xl shadow-lg max-w-md mx-auto mb-8">
+                <h3 class="text-xl font-bold text-tuaCinta mb-3">Hitung Mundur Hari Bahagia</h3>
+                <div id="hitungan" class="flex justify-center gap-3 text-center">
+                    <div class="bg-cinta text-white p-3 rounded-lg w-16">
+                        <span class="block text-2xl font-bold" id="hari">00</span>
+                        <span class="text-xs">Hari</span>
+                    </div>
+                    <div class="bg-cinta text-white p-3 rounded-lg w-16">
+                        <span class="block text-2xl font-bold" id="jam">00</span>
+                        <span class="text-xs">Jam</span>
+                    </div>
+                    <div class="bg-cinta text-white p-3 rounded-lg w-16">
+                        <span class="block text-2xl font-bold" id="menit">00</span>
+                        <span class="text-xs">Menit</span>
+                    </div>
+                    <div class="bg-cinta text-white p-3 rounded-lg w-16">
+                        <span class="block text-2xl font-bold" id="detik">00</span>
+                        <span class="text-xs">Detik</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pesan Utama -->
+            <div class="bg-white/85 backdrop-blur p-8 rounded-3xl shadow-xl max-w-2xl mx-auto mb-10">
+                <h3 class="text-2xl font-bold text-tuaCinta mb-4">Untuk Sayangku,</h3>
+                <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    Di hari spesial ini, kakaa cuma mau mengucapkan terima kasih sudah hadir dan mewarnai hari-hariku. Semoga umur yang bertambah ini membawa kebahagiaan, kesehatan, dan semua impianmu perlahan terwujud.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg italic">
+                    Aku bersyukur bisa mengenalmu dan berjalan bersamamu sejauh ini. Tetaplah menjadi dirimu yang aku cintai. Kakaa sayang kamu, hari ini, besok, dan selamanya. ❤️
+                </p>
+                <p class="mt-6 text-right font-semibold text-tuaCinta">
+                    Dari: Kakaa yang selalu menyayangimu
+                </p>
+            </div>
+
+            <!-- ✅ BAGIAN KATA-KATA ROMANTIS -->
+            <div class="mb-10">
+                <h3 class="text-2xl font-bold text-white bayangan-teks mb-6">Kata-Kata Dari Hatiku 🤍</h3>
+                <div class="bg-white/80 backdrop-blur p-6 rounded-2xl shadow-lg max-w-2xl mx-auto space-y-4 text-left">
+                    <p class="text-gray-700 italic">
+                        "Sejak kamu hadir, hidupku terasa lebih berwarna. Senyummu adalah alasan aku semangat menjalani hari."
+                    </p>
+                    <p class="text-gray-700 italic">
+                        "Aku tidak butuh waktu lama untuk jatuh cinta padamu, tapi aku butuh seumur hidupku untuk membuktikannya."
+                    </p>
+                    <p class="text-gray-700 italic">
+                        "Terima kasih sudah menjadi pendengar yang baik, tempat bercerita, dan rumah ternyaman bagiku."
+                    </p>
+                    <p class="text-gray-700 italic">
+                        "Semoga di usiamu yang sekarang, kamu semakin dewasa, semakin bahagia, dan tahu betapa berartinya kamu bagiku."
+                    </p>
+                    <p class="text-gray-700 italic">
+                        "Cintaku padamu tidak akan pernah berubah, meski waktu terus berjalan. Tetaplah bersamaku, ya?"
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tombol Kejutan -->
+            <button id="tombolKejutan" class="bg-tuaCinta hover:bg-cinta text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-300">
+                <i class="fa fa-gift mr-2"></i> Klik Dapat Kejutan
+            </button>
+
+            <!-- Pesan Kejutan -->
+            <div id="pesanKejutan" class="hidden mt-8 bg-white/90 p-6 rounded-2xl shadow-xl max-w-md mx-auto">
+                <p class="text-xl text-tuaCinta font-semibold">
+                    "Cinta bukan tentang seberapa sering bertemu, tapi seberapa besar kepercayaan dan ketulusan hati. Aku berjanji akan selalu ada buat kamu, dalam suka maupun duka. Selamat ulang tahun cintaku! ❤️"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efek Hati Jatuh
+        const areaHati = document.getElementById('efekHati');
+        function buatHati() {
+            const hati = document.createElement('div');
+            hati.innerHTML = '❤️';
+            hati.style.position = 'absolute';
+            hati.style.left = Math.random() * 100 + '%';
+            hati.style.fontSize = Math.random() * 20 + 10 + 'px';
+            hati.style.opacity = Math.random() * 0.5 + 0.5;
+            hati.style.animation = `jatuh ${Math.random() * 3 + 3}s linear forwards`;
+            areaHati.appendChild(hati);
+
+            setTimeout(() => { hati.remove() }, 6000);
+        }
+        setInterval(buatHati, 300);
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes jatuh {
+                to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Kontrol Musik
+        const musik = document.getElementById('musikLatar');
+        const tombolMusik = document.getElementById('tombolMusik');
+        let sedangPutar = false;
+
+        tombolMusik.addEventListener('click', () => {
+            if (sedangPutar) {
+                musik.pause();
+                tombolMusik.innerHTML = '<i class="fa fa-music text-cinta text-xl"></i>';
+            } else {
+                musik.play();
+                tombolMusik.innerHTML = '<i class="fa fa-pause text-cinta text-xl"></i>';
+            }
+            sedangPutar = !sedangPutar;
+        });
+
+        // Hitung Mundur (Ganti tanggalnya di sini!)
+        const tanggalTujuan = new Date("2026-06-12T00:00:00").getTime();
+
+        const hitungMundur = setInterval(() => {
+            const sekarang = new Date().getTime();
+            const selisih = tanggalTujuan - sekarang;
+
+            const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+            const jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+            const detik = Math.floor((selisih % (1000 * 60)) / 1000);
+
+            document.getElementById("hari").innerText = hari.toString().padStart(2, '0');
+            document.getElementById("jam").innerText = jam.toString().padStart(2, '0');
+            document.getElementById("menit").innerText = menit.toString().padStart(2, '0');
+            document.getElementById("detik").innerText = detik.toString().padStart(2, '0');
+
+            if (selisih < 0) {
+                clearInterval(hitungMundur);
+                document.getElementById("hitungan").innerHTML = "<p class='text-xl font-bold text-tuaCinta'>Hari Bahagia Telah Tiba! 🎉</p>";
+            }
+        }, 1000);
+
+        // Tombol Kejutan
+        document.getElementById('tombolKejutan').addEventListener('click', () => {
+            const kotakPesan = document.getElementById('pesanKejutan');
+            kotakPesan.classList.toggle('hidden');
+            if (!kotakPesan.classList.contains('hidden')) {
+                kotakPesan.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
