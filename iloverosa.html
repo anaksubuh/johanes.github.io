@@ -64,9 +64,9 @@
 
     <!-- Musik Latar -->
     <audio id="musikLatar" loop>
-        <source src="lagu-kesayangan.mp3" type="audio/mpeg">
+        <source src="https://github.com/anaksubuh/iloverosa/raw/main/music/lagu-ulang-tahun.mp3" type="audio/mpeg">
         Browser kamu tidak mendukung pemutar musik.
-    
+    </audio>
     
     <button id="tombolMusik" class="fixed top-4 right-4 bg-white/80 p-3 rounded-full shadow-lg z-50 hover:scale-110 transition">
         <i class="fa fa-music text-cinta text-xl"></i>
@@ -82,9 +82,9 @@
                 Untuk Orang Spesial di Hatiku ❤️
             </h2>
 
-            <!-- ✅ FOTO UTAMA -->
+            <!-- ✅ FOTO UTAMA - Menggunakan URL dari GitHub -->
             <div class="w-64 h-64 mx-auto rounded-full overflow-hidden border-8 border-white shadow-xl melayang mb-8">
-                <img src="/foto1.jpg.jpeg" alt="beautyfull grill" class="w-full h-full object-cover">
+                <img src="https://github.com/anaksubuh/iloverosa/blob/main/img/foto-utama.jpg.jpeg?raw=true" alt="beautiful girl" class="w-full h-full object-cover">
             </div>
 
             <!-- Hitung Mundur -->
@@ -194,7 +194,7 @@
                 musik.pause();
                 tombolMusik.innerHTML = '<i class="fa fa-music text-cinta text-xl"></i>';
             } else {
-                musik.play();
+                musik.play().catch(e => console.log('Audio play failed:', e));
                 tombolMusik.innerHTML = '<i class="fa fa-pause text-cinta text-xl"></i>';
             }
             sedangPutar = !sedangPutar;
