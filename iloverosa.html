@@ -62,10 +62,9 @@
     <!-- Efek Hati Jatuh -->
     <div class="jatuh-hati" id="efekHati"></div>
 
-    <!-- Musik Latar -->
-    <audio id="musikLatar" loop>
-        <source src="https://github.com/anaksubuh/iloverosa/raw/main/music/lagu-ulang-tahun.mp3" type="audio/mpeg">
-        Browser kamu tidak mendukung pemutar musik.
+    <!-- Musik Latar - AUTO PLAY -->
+    <audio id="musikLatar" loop autoplay>
+        <source src="https://github.com/anaksubuh/johanes.github.io/raw/refs/heads/main/img/lagu-ulang-tahun.mp3?raw=true" type="audio/mpeg">
     </audio>
     
     <button id="tombolMusik" class="fixed top-4 right-4 bg-white/80 p-3 rounded-full shadow-lg z-50 hover:scale-110 transition">
@@ -84,7 +83,7 @@
 
             <!-- ✅ FOTO UTAMA - Menggunakan URL dari GitHub -->
             <div class="w-64 h-64 mx-auto rounded-full overflow-hidden border-8 border-white shadow-xl melayang mb-8">
-                <img src="https://github.com/anaksubuh/iloverosa/blob/main/img/foto-utama.jpg.jpeg?raw=true" alt="beautiful girl" class="w-full h-full object-cover">
+                <img src="https://github.com/anaksubuh/johanes.github.io/blob/main/img/foto-utama.jpg.jpeg?raw=true" alt="beautiful girl" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/FFB6C1/white?text=❤️+My+Love+❤️'">
             </div>
 
             <!-- Hitung Mundur -->
@@ -184,23 +183,67 @@
         `;
         document.head.appendChild(style);
 
-        // Kontrol Musik
+        // ========== AUTO PLAY MUSIK ==========
         const musik = document.getElementById('musikLatar');
         const tombolMusik = document.getElementById('tombolMusik');
         let sedangPutar = false;
 
-        tombolMusik.addEventListener('click', () => {
+        // Fungsi untuk memulai musik (perlu interaksi user karena kebijakan browser)
+        function mulaiMusik() {
+            musik.play().then(() => {
+                sedangPutar = true;
+                tombolMusik.innerHTML = '<i class="fa fa-pause text-cinta text-xl"></i>';
+                console.log("Musik berjalan otomatis");
+            }).catch(e => {
+                console.log("Auto-play ditolak browser:", e);
+                // Tampilkan instruksi ke user
+                tombolMusik.classList.add('animate-pulse');
+                tombolMusik.title = "Klik untuk memutar musik";
+            });
+        }
+
+        // Coba putar musik saat halaman dimuat (mungkin diblokir)
+        document.addEventListener('DOMContentLoaded', () => {
+            mulaiMusik();
+        });
+
+        // Backup: coba lagi saat user mengklik di mana saja (kebijakan browser)
+        const playOnInteraction = () => {
+            if (!sedangPutar) {
+                musik.play().then(() => {
+                    sedangPutar = true;
+                    tombolMusik.innerHTML = '<i class="fa fa-pause text-cinta text-xl"></i>';
+                    tombolMusik.classList.remove('animate-pulse');
+                }).catch(e => console.log("Gagal memutar:", e));
+            }
+            // Hapus listener setelah musik berjalan
+            document.removeEventListener('click', playOnInteraction);
+            document.removeEventListener('touchstart', playOnInteraction);
+        };
+        
+        // Jika auto-play gagal, tunggu user klik di mana saja
+        musik.play().catch(() => {
+            document.addEventListener('click', playOnInteraction);
+            document.addEventListener('touchstart', playOnInteraction);
+        });
+
+        // Tombol manual untuk play/pause
+        tombolMusik.addEventListener('click', (e) => {
+            e.stopPropagation(); // Mencegah trigger playOnInteraction ganda
             if (sedangPutar) {
                 musik.pause();
                 tombolMusik.innerHTML = '<i class="fa fa-music text-cinta text-xl"></i>';
+                sedangPutar = false;
             } else {
-                musik.play().catch(e => console.log('Audio play failed:', e));
-                tombolMusik.innerHTML = '<i class="fa fa-pause text-cinta text-xl"></i>';
+                musik.play().then(() => {
+                    tombolMusik.innerHTML = '<i class="fa fa-pause text-cinta text-xl"></i>';
+                    sedangPutar = true;
+                    tombolMusik.classList.remove('animate-pulse');
+                }).catch(e => console.log('Audio play failed:', e));
             }
-            sedangPutar = !sedangPutar;
         });
 
-        // Hitung Mundur (Ganti tanggalnya di sini!)
+        // Hitung Mundur
         const tanggalTujuan = new Date("2026-06-12T00:00:00").getTime();
 
         const hitungMundur = setInterval(() => {
